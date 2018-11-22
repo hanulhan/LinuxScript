@@ -10,9 +10,9 @@ for file in $@; do
   FILENAME=${file%%.*}
   EXT=${file##*.}
 
-  echo "avconv -i ${file} -c:a copy -c:v libx264 -crf ${CRF} ${FILENAME}-x264-${CRF}.mp4 > ${FILENAME}-x264-${CRF}.mp4.log"
+  echo "avconv -i ${file} -c:a:2 copy -c:v libx264 -map 0:a -map 0:v -crf ${CRF} ${FILENAME}-x264-${CRF}.mp4 > ${FILENAME}-x264-${CRF}.mp4.log"
 
-  avconv -i ${file} -c:a copy -c:v libx264 -crf ${CRF} ${FILENAME}-x264-${CRF}.mp4 > ${FILENAME}-x264-${CRF}.mp4.log
+  avconv -i ${file} -c:a copy -c:v libx264 -map 0:a -map 0:v -crf ${CRF} ${FILENAME}-x264-${CRF}.mp4 > ${FILENAME}-x264-${CRF}.mp4.log
 
 done
 
